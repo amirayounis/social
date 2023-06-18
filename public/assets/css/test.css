@@ -1,0 +1,27 @@
+h1{
+    color: rgb(43, 49, 47);
+}
+.post{
+    border:2px dotted black;
+    margin: 20px;
+}
+.nav_bar{
+    background-color: red;
+    height: 10vh;
+     padding: 10px;
+     position: sticky;
+     width: 100%;
+     top:0;
+     left:0;
+}
+
+
+.footer{
+    background-color: black;
+    color: rgb(255, 255, 255) !important;
+    position: fixed;
+    width:100%;
+    bottom:0;
+    left:0;
+
+}
