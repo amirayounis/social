@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,16 +44,23 @@ Route::get('/addpost', function (Request $req) {
 // });
 
 // .............views with vars............
+// ..............use controller.......................
+Route::get('/test2/{name}', [WebController::class,"test"]);
 
-Route::get('/test2/{name}', function ($name,Request $request) {
-$data=$request->all();
-//    return view('web.test',compact("name"));
-return view('web.test',["name"=>$name,"data"=>$data]);
-});
-Route ::get("/posts",function(){
-    $posts=[
-     ["title"=>"post1","body"=>"post1post1post1"],
-     ["title"=>"post2","body"=>"post2post2post2"]
-    ];
- return view("web.posts",compact("posts"));
-});
+// ...............postscrud.......................................
+// get all data
+Route ::get("/posts",[PostController::class,"index"])->name("posts");
+// goto form
+Route::get("/posts/create",[PostController::class,"create"])->name("posts.create");
+// send req from form
+Route::post("/posts/store",[PostController::class,"store"])->name("posts.store");
+// delete from database
+Route::delete("/posts/{id}/delete",[PostController::class,"remove"])->name("posts.remove");
+// goto edit form
+Route::get("/posts/{post}/edit",[PostController::class,"edit"])->name("posts.edit");
+// send req editfrom form
+Route::put("/posts/{post}/update",[PostController::class,"update"])->name("posts.update");
+// get 1 post
+Route::get("posts/{post}",[PostController::class,"show"])->name("posts.show");
+// -----------------------------------------
+Route ::resource("comments",CommentController::class);
