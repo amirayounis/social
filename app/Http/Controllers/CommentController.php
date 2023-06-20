@@ -13,7 +13,9 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments=Comment::all();
+        return view("comments.index",compact("comments"));
+
     }
 
     /**
@@ -57,7 +59,8 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+       $comment->update($request->all());
+        return back();
     }
 
     /**
@@ -65,6 +68,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+        return back();
     }
 }

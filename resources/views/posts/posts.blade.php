@@ -1,11 +1,16 @@
 @extends("template")
 @section("main")
 <h1>posts</h1>
+
+{{Auth::user()->name}}
 <a href="{{route("posts.create")}}">addpost</a>
 @foreach ($posts as $post)
   <div class="post">
-   <h1>{{$post["title"]}}</h1>
+   <h1>{{$post["title"]}} ,written by:{{Auth::user()->name}}</h1>
    <p>{{$post["body"]}}</p>
+   @if (isset($post['img']))
+   <img src="/storage/imgs/{{$post["img"]}}" width="100px" >
+   @endif
    <form action="{{route("posts.remove",['id'=>$post['id']])}}" method="post">
    @method("DELETE")
    @csrf

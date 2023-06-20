@@ -11,7 +11,14 @@
 <body>
     <nav>
 <div class="nav_bar">
-   <h1> Nav bar<h1>
+   <h1> Nav bar
+    @auth
+    <a href="/logout">logout</a>
+    @endauth
+    @guest
+
+    @endguest
+    <h1>
 </div>
     </nav>
     <div class="main">

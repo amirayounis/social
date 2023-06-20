@@ -11,7 +11,7 @@ class Post extends Model
     // table
     protected $table="posts";
 // fillable columns
-protected $fillable=["title","body"];
+protected $fillable=["title","body",'img',"user_id"];
 // realations  ..................
 public function comments()
 {

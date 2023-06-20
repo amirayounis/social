@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
@@ -64,3 +65,10 @@ Route::put("/posts/{post}/update",[PostController::class,"update"])->name("posts
 Route::get("posts/{post}",[PostController::class,"show"])->name("posts.show");
 // -----------------------------------------
 Route ::resource("comments",CommentController::class);
+/////////////////
+Route::get("/register",[AuthController::class,"registerform"]);
+Route::post("/register",[AuthController::class,"register"])->name("register");
+Route::get("/login",[AuthController::class,"loginform"]);
+Route::post("/login",[AuthController::class,"login"])->name("login");
+
+Route::get("/logout",[AuthController::class,"logout"])->name("logout");

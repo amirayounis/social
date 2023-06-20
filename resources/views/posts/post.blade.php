@@ -19,8 +19,17 @@
 {{-- {{dd($post->comments)}} --}}
 @foreach ( $post->comments as $comment)
 <div class="post">
-    <p>{{$comment["body"]}}</p>
-
+    <form action="{{route('comments.update',['comment'=>$comment])}}" method="post">
+        @method("PUT")
+        @csrf
+        <input type="text" name="body" value="{{$comment["body"]}}">
+        <button>edit</button>
+    </form>
+     <form action="{{route("comments.destroy",['comment'=>$comment])}}" method="post">
+      @method("DELETE")
+      @csrf
+      <button>x</button>
+    </form>
  </div>
 @endforeach
 @endsection
