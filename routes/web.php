@@ -72,3 +72,7 @@ Route::get("/login",[AuthController::class,"loginform"]);
 Route::post("/login",[AuthController::class,"login"])->name("login");
 
 Route::get("/logout",[AuthController::class,"logout"])->name("logout");
+
+
+Route::get("/trainer/register",[AuthController::class,"trainerform"]);
+Route::post("/trainer/register",[AuthController::class,"trainer"])->name("trainer.register");

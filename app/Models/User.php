@@ -17,6 +17,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // protected $table="trainee";
+    // public $timestamps=false;
     protected $fillable = [
         'name',
         'email',
@@ -42,4 +44,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function trainer(){
+        return $this->hasOne(Trainer::class);
+    }
 }

@@ -14,9 +14,13 @@
    <h1> Nav bar
     @auth
     <a href="/logout">logout</a>
+     {{Auth::user()->name}}
+        <img src="storage/imgs/{{Auth::user()->trainer->img}}" width="60px">
     @endauth
     @guest
-
+    <a href="/login">login</a>
+    <a href="/register">regiter as trainee</a>
+    <a href="/trainer/register">regiter as trainer</a>
     @endguest
     <h1>
 </div>
